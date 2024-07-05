@@ -59,11 +59,10 @@ with app.app_context():
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
-# model = load_model(r'C:\Users\athar\Drowsiness_Detect\Model\model.h5')
-model = load_model(r'C:\Users\aksha\model\model.h5') #Insert your own location
+model = load_model(r'C:\Users\aksha\Driver-drowsiness-detection-system\model1.keras')
 
 mixer.init()
-sound= mixer.Sound(r'C:\Users\aksha\alarm.wav') #Insert your location
+sound= mixer.Sound(r'C:\Users\aksha\Driver-drowsiness-detection-system\alarm.mp3') 
 cap = cv2.VideoCapture(0)
 
 def genframes():
@@ -99,12 +98,6 @@ def genframes():
             
             print(prediction)
 
-            # if counter > 2:
-            #     with app.app_context():
-            #         msg = Message('Alert for your close one!', sender = 'dagaonkaratharva@gmail.com', recipients = ['dagaonkaratharva@gmail.com'])
-            #         msg.body = ("Your close one has been detected drowsy while driving. Please get in touch with them as soon as possible. "  )
-            #         mail.send(msg)
-            #         counter = 0
 
             #if eyes are closed
             if prediction[0][0]>0.50:
